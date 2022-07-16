@@ -1,0 +1,8 @@
+Run:
+  # DeBug模式
+  Debug: true
+  # 模式，dev为开发者模式，输出更多信息，release为发行模式
+  Mode: dev
+SharePoint:
+  # SharePoint地址，例如: xxxxx-my.sharepoint.com
+  Host:
