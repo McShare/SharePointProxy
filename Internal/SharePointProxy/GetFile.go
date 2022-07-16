@@ -1,7 +1,7 @@
 /*
  * @Author: NyanCatda
  * @Date: 2022-07-16 15:32:16
- * @LastEditTime: 2022-07-16 16:06:02
+ * @LastEditTime: 2022-07-16 16:54:30
  * @LastEditors: NyanCatda
  * @Description: SharePoint代理模块
  * @FilePath: \SharePointProxy\Internal\SharePointProxy\GetFile.go
@@ -13,6 +13,7 @@ import (
 	"net/http"
 
 	"github.com/McShare/SharePointProxy/Internal/Config"
+	"github.com/nyancatda/AyaLog"
 	"github.com/nyancatda/HttpRequest"
 )
 
@@ -28,6 +29,7 @@ func GetFile(Path string) (*bytes.Buffer, *http.Response, error) {
 
 	// 组成URL
 	URL := "https://" + Config.SharePoint.Host + Path
+	AyaLog.DeBug("GetFile", URL)
 
 	// 发起请求
 	Body, HttpResponse, err := HttpRequest.GetRequest(URL, []string{})

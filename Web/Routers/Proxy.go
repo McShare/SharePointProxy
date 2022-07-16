@@ -1,7 +1,7 @@
 /*
  * @Author: NyanCatda
  * @Date: 2022-07-16 15:38:35
- * @LastEditTime: 2022-07-16 16:22:43
+ * @LastEditTime: 2022-07-16 16:54:04
  * @LastEditors: NyanCatda
  * @Description:
  * @FilePath: \SharePointProxy\Web\Routers\Proxy.go
@@ -13,7 +13,6 @@ import (
 	"net/http"
 
 	"github.com/McShare/SharePointProxy/Internal/SharePointProxy"
-	"github.com/McShare/SharePointProxy/Tools"
 	"github.com/gin-gonic/gin"
 	"github.com/nyancatda/AyaLog"
 )
@@ -30,16 +29,8 @@ func ProxyRouter(r *gin.Engine) {
 			c.Abort()
 			return
 		}
-		// 获取所有请求参数
-		Query := c.Request.URL.Query()
-		var QueryMap = make(map[string]any, len(Query))
-		for k := range Query {
-			QueryMap[k] = c.Query(k)
-		}
-		// 转换为查询字符串
-		QueryString := Tools.MapToGetQuery(QueryMap)
 
-		FileBuffer, HttpResponse, err := SharePointProxy.GetFile(c.Param("URLPath") + "?" + QueryString)
+		FileBuffer, HttpResponse, err := SharePointProxy.GetFile(c.Param("URLPath") + "?" + c.Request.URL.RawQuery)
 		if err != nil {
 			AyaLog.Error("Request", err)
 			c.String(http.StatusInternalServerError, "Server Error")
