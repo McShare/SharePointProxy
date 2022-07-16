@@ -1,7 +1,7 @@
 /*
  * @Author: NyanCatda
  * @Date: 2022-07-16 15:32:16
- * @LastEditTime: 2022-07-16 16:54:30
+ * @LastEditTime: 2022-07-16 17:49:29
  * @LastEditors: NyanCatda
  * @Description: SharePoint代理模块
  * @FilePath: \SharePointProxy\Internal\SharePointProxy\GetFile.go
@@ -17,6 +17,16 @@ import (
 	"github.com/nyancatda/HttpRequest"
 )
 
+var (
+	CacheData = make(map[string]Cache) // KV缓存数据
+)
+
+// 缓存结构体
+type Cache struct {
+	Buffer   *bytes.Buffer
+	Response *http.Response
+}
+
 /**
  * @description: 获取文件
  * @param {string} Path 路径 /xxxx/xxxx/xxxx?xxxxx=xxxxx
@@ -25,6 +35,11 @@ import (
  * @return {error} 错误
  */
 func GetFile(Path string) (*bytes.Buffer, *http.Response, error) {
+	// 判断是否已经缓存
+	if CacheData[Path] != (Cache{}) {
+		return CacheData[Path].Buffer, CacheData[Path].Response, nil
+	}
+
 	Config := Config.Get
 
 	// 组成URL
@@ -38,7 +53,15 @@ func GetFile(Path string) (*bytes.Buffer, *http.Response, error) {
 	}
 
 	// 返回信息流储存至Buffer
-	PhotoBuffer := bytes.NewBuffer(Body)
+	FileBuffer := bytes.NewBuffer(Body)
 
-	return PhotoBuffer, HttpResponse, nil
+	// 储存至缓存
+	if HttpResponse.StatusCode == http.StatusOK {
+		CacheData[Path] = Cache{
+			Buffer:   FileBuffer,
+			Response: HttpResponse,
+		}
+	}
+
+	return FileBuffer, HttpResponse, nil
 }
