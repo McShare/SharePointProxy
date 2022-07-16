@@ -1,7 +1,7 @@
 /*
  * @Author: NyanCatda
  * @Date: 2022-07-16 15:55:46
- * @LastEditTime: 2022-07-16 15:58:38
+ * @LastEditTime: 2022-07-16 16:19:36
  * @LastEditors: NyanCatda
  * @Description: Map转换为GetQuery
  * @FilePath: \SharePointProxy\Tools\MapToGetQuery.go
@@ -20,5 +20,9 @@ func MapToGetQuery(Map map[string]any) string {
 	for Key, Value := range Map {
 		Query += Key + "=" + fmt.Sprintf("%v", Value) + "&"
 	}
-	return Query[:len(Query)-1]
+	if Query != "" {
+		return Query[:len(Query)-1]
+	} else {
+		return ""
+	}
 }
