@@ -1,7 +1,7 @@
 /*
  * @Author: NyanCatda
  * @Date: 2022-07-16 15:11:05
- * @LastEditTime: 2022-07-16 15:27:59
+ * @LastEditTime: 2022-07-16 15:47:46
  * @LastEditors: NyanCatda
  * @Description: 主文件
  * @FilePath: \SharePointProxy\main.go
@@ -67,7 +67,7 @@ func main() {
 	Routers.SetupRouter(r)
 
 	// 运行
-	AyaLog.Info("System", Constant.Codename+"启动完成！正在监听端口："+strconv.Itoa(*RunPort))
+	AyaLog.Info("System", Constant.Codename+"启动完成！运行于http://localhost:"+strconv.Itoa(*RunPort))
 	if err := r.Run(":" + strconv.Itoa(*RunPort)); err != nil {
 		AyaLog.Error("System", err)
 		return

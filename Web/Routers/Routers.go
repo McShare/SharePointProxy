@@ -1,7 +1,7 @@
 /*
  * @Author: NyanCatda
  * @Date: 2022-07-16 15:25:57
- * @LastEditTime: 2022-07-16 15:27:31
+ * @LastEditTime: 2022-07-16 15:47:21
  * @LastEditors: NyanCatda
  * @Description: 路由注册
  * @FilePath: \SharePointProxy\Web\Routers\Routers.go
@@ -23,6 +23,9 @@ import (
 func SetupRouter(r *gin.Engine) *gin.Engine {
 	// 注册500错误处理
 	r.Use(ServerError)
+
+	//注册反向代理路由
+	ProxyRouter(r)
 
 	return r
 }

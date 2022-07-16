@@ -30,6 +30,8 @@ github.com/nyancatda/AyaLog v1.0.6 h1:q3ado58lN1diMlUJoqTW2ck5OpyqTxH71SaCyOIlm1
 github.com/nyancatda/AyaLog v1.0.6/go.mod h1:ZbOWddB8xUfSdNuDAvfpTe76EGgOp1XaGouCTh+J+1w=
 github.com/nyancatda/AyaLog/ModLog/GinLog v0.0.0-20220627152527-68e778cd1741 h1:NnfP7z4cUOpAmURp0Rabgxs+RTn0qTiygIR6iKeehGo=
 github.com/nyancatda/AyaLog/ModLog/GinLog v0.0.0-20220627152527-68e778cd1741/go.mod h1:OJBSMsNqE0XjWJewYs/1ZK80UcNu58fD0bwrfy7HgaA=
+github.com/nyancatda/HttpRequest v1.0.4 h1:BV8i5+eG8+PCgx9oB8f38iW5yqFp05l4Vdct/V05ZXg=
+github.com/nyancatda/HttpRequest v1.0.4/go.mod h1:dBpFEE2aEAFXSkuKwSB9wq8pIAJ+8gtXbTof6Y3uBes=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
