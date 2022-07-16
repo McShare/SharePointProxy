@@ -1,7 +1,7 @@
 /*
  * @Author: NyanCatda
  * @Date: 2022-07-16 15:25:57
- * @LastEditTime: 2022-07-16 15:47:21
+ * @LastEditTime: 2022-07-16 16:21:21
  * @LastEditors: NyanCatda
  * @Description: 路由注册
  * @FilePath: \SharePointProxy\Web\Routers\Routers.go

@@ -1,7 +1,7 @@
 /*
  * @Author: NyanCatda
  * @Date: 2022-07-16 15:38:35
- * @LastEditTime: 2022-07-16 15:59:40
+ * @LastEditTime: 2022-07-16 16:22:43
  * @LastEditors: NyanCatda
  * @Description:
  * @FilePath: \SharePointProxy\Web\Routers\Proxy.go
@@ -26,6 +26,10 @@ import (
 func ProxyRouter(r *gin.Engine) {
 	// 获取文件
 	r.GET("/*URLPath", func(c *gin.Context) {
+		if c.Param("URLPath") == "/favicon.ico" {
+			c.Abort()
+			return
+		}
 		// 获取所有请求参数
 		Query := c.Request.URL.Query()
 		var QueryMap = make(map[string]any, len(Query))
